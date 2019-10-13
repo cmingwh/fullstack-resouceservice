@@ -19,7 +19,7 @@ public class Skill {
 
 	@Id
 	@GeneratedValue
-	private Long skill_id;
+	private Long skillId;
 
 	@Column(name = "name")
 	private String name;

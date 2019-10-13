@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SkillDtls {
-private Long id;
+public class SkillDtl {
+private Long skillId;
 private String name="";
 private String toc="";
 private String prerequeistes="";
