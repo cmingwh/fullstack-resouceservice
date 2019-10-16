@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,15 +25,15 @@ public class SkillController {
     @Autowired
     private SkillService skillService;
 
-    @DeleteMapping(value = "/")
-    public boolean delete(@RequestParam("skillId") Long skillId) {
-        skillService.delete(skillId);
+    @DeleteMapping(value = "/{id}")
+    public boolean delete(@PathVariable("id") Long id) {
+        skillService.delete(id);
         return true;
     }
     
-    @GetMapping(value = "/find")
-    public Optional<Skill> findById(@RequestParam("skillId") Long skillId) {
-        return skillService.findById(skillId);
+    @GetMapping(value = "/find/{id}")
+    public Optional<Skill> findById(@PathVariable("id") Long id) {
+        return skillService.findById(id);
     }
     
     @PostMapping(value = "/")

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.ibm.fullstack.entity.Skill;
@@ -12,10 +13,14 @@ import com.ibm.fullstack.repository.SkillRepository;
 @Service("skillService")
 public class SkillService {
 	@Autowired
-    private SkillRepository skillRepository;
-	
+	private SkillRepository skillRepository;
+
 	public void delete(Long skillId) {
-		skillRepository.deleteById(skillId);
+		try {
+			skillRepository.deleteById(skillId);
+		} catch (EmptyResultDataAccessException e) {
+			return;
+		}
 	}
 
 	public List<Skill> findAll() {
@@ -29,5 +34,5 @@ public class SkillService {
 	public Skill save(Skill skill) {
 		return skillRepository.save(skill);
 	}
-	
+
 }
