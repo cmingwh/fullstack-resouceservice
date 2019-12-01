@@ -30,6 +30,10 @@ public class SkillService {
 	public Optional<Skill> findById(Long skillId) {
 		return skillRepository.findById(skillId);
 	}
+	
+	public List<Skill> findByName(String name) {
+		return skillRepository.findByName(name);
+	}
 
 	public Skill save(Skill skill) {
 		return skillRepository.save(skill);
